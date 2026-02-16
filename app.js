@@ -360,13 +360,13 @@ if (headerScore) {
 
   results.innerHTML = "";
 // 📸 Image selon état de l'eau
-let statusImage = "images/pool-clean.jpg";
+let statusImage = "images/piscine-propre.jpg";
 
 if (healthScore < 40) {
-  statusImage = "images/pool-dirty.jpg";
-}
+  statusImage = "images/piscine-sale.jpg";
+} 
 else if (healthScore < 70) {
-  statusImage = "images/pool-medium.jpg";
+  statusImage = "images/piscine-moyenne.jpg";
 }
 
 results.innerHTML += `
