@@ -80,6 +80,7 @@ const DOSAGES = {
 /* =========================
    SCORE SANTÉ
 ========================= */
+
 function calculateHealthScore({ ph, tac, cya, algae }) {
 
   let score = 100;
@@ -358,6 +359,25 @@ if (headerScore) {
   if (!results) return;
 
   results.innerHTML = "";
+// 📸 Image selon état de l'eau
+let statusImage = "images/pool-clean.jpg";
+
+if (healthScore < 40) {
+  statusImage = "images/pool-dirty.jpg";
+}
+else if (healthScore < 70) {
+  statusImage = "images/pool-medium.jpg";
+}
+
+results.innerHTML += `
+  <img src="${statusImage}" style="
+    width:100%;
+    max-height:180px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:12px;
+  ">
+`;
 
   /* 🚨 ALERTES */
   if (alerts.length) {

@@ -159,3 +159,22 @@ select {
   font-size: 13px;
   color: #555;
 }
+.hero-bg {
+  background:
+    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url("images/hero.jpg") center/cover no-repeat;
+  color: white;
+}
+
+.hero-bg h1,
+.hero-bg p {
+  color: white;
+}
+/* Images des étapes */
+.step-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
