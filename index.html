@@ -2,16 +2,155 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>PoolCare</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="logo.png">
+  <title>PoolCare V1</title>
+<link rel="icon" href="logo.png">
 
   <style>
+/* =========================
+   UI PRO
+========================= */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  z-index: 100;
+}
+
+.app-header strong {
+  font-size: 18px;
+  color: var(--poolcare-blue);
+}
+
+.score-badge {
+  background: #e3f2fd;
+  color: #1E88E5;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.card.pro {
+  border-left-width: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.btn-large {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.timeline-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.timeline-number {
+  background: var(--poolcare-blue);
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 28px;
+  font-weight: bold;
+}
+/* =========================
+   MOBILE RESPONSIVE MENU
+========================= */
+
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: var(--poolcare-blue);
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    width: 180px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* =========================
+   MODALES PREMIUM
+========================= */
+.premium-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.premium-modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+}
+
+.offer {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 12px 0;
+}
+
+.offer.highlight {
+  border-color: #1E88E5;
+  background: #E3F2FD;
+}
 
 /* =========================
    GLOBAL
 ========================= */
+html { scroll-behavior: smooth; }
 
 :root {
   --poolcare-blue: #1E88E5;
@@ -19,13 +158,12 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: Inter, Arial, sans-serif;
   background: #f9fbfd;
   padding: 20px;
-  margin: 0;
 }
 
-h1,h2,h3 {
+h1, h2, h3 {
   color: var(--poolcare-blue);
 }
 
@@ -47,77 +185,60 @@ button.secondary {
   background: white;
   border-radius: 8px;
   padding: 14px;
-  margin-top: 12px;
-}
-
-/* =========================
-   HEADER
-========================= */
-
-.app-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:12px 16px;
-  background:white;
-  border-bottom:1px solid #ddd;
-}
-
-.score-badge {
-  background:#e3f2fd;
-  color:#1E88E5;
-  padding:6px 12px;
-  border-radius:20px;
-  font-weight:bold;
+  margin-top: 10px;
 }
 
 /* =========================
    PAGES
 ========================= */
+.page { display: none; }
+.page.active { display: block; }
 
-.page{display:none;}
-.page.active{display:block;}
-
-.small{
-  font-size:13px;
-  color:#555;
+.small {
+  font-size: 13px;
+  color: #555;
 }
 
 /* =========================
    HOME
 ========================= */
-
-.hero{
-  text-align:center;
-  background:var(--poolcare-light);
-  padding:30px;
-  border-radius:16px;
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+  background: var(--poolcare-light);
+  border-radius: 16px;
 }
 
-.steps{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:16px;
+.hero-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.step-img{
-  width:100%;
-  height:140px;
-  object-fit:cover;
-  border-radius:8px;
-  margin-bottom:10px;
+.section {
+  margin-top: 40px;
 }
 
-.section{
-  margin-top:40px;
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
 }
 
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
   </style>
 </head>
 
 <body>
 
-<header class="app-header">
+  
+  <header class="app-header">
 
   <strong>💧 PoolCare</strong>
 
@@ -133,95 +254,156 @@ button.secondary {
 
 </header>
 
-<!-- =========================
-   HOME
-========================= -->
 
+
+<!-- =========================
+     PAGE HOME
+========================= -->
 <section id="page-home" class="page active">
 
-  <section class="hero">
-
+  <!-- HERO -->
+  <section class="hero hero-bg">
     <img
-      src="images/piscine-propre.jpg"
-      alt="Piscine"
-      style="width:100%;max-height:320px;object-fit:cover;border-radius:12px;margin-bottom:20px;"
-    >
+ src="images/piscine-propre.jpg"
+  alt="Piscine"
+  class="hero-image"
+/>
+
 
     <h1>
       Entretenir sa piscine,<br>
       <strong>dans le bon ordre.</strong>
     </h1>
 
-    <p>
-      PoolCare analyse votre eau et vous guide étape par étape.
+    <p style="max-width:600px;margin:0 auto;font-size:18px;">
+      PoolCare analyse l’eau de votre piscine et vous guide étape par étape,
+      avec les bons produits, les bons dosages et les bonnes priorités.
     </p>
 
-    <button onclick="goToPage('page-onboarding')">
-      🔍 Analyser ma piscine
-    </button>
+    <div class="hero-actions">
+      <button onclick="openTrial()">⭐ Essai Premium gratuit 7 jours</button>
+      <button class="secondary" onclick="goToPage('page-onboarding')">
+        🔍 Analyser ma piscine
+      </button>
+    </div>
 
+    <p class="small" style="margin-top:16px;">
+      ✔ Sans engagement • ✔ Sécurité piscine • ✔ Résultats immédiats • ✔ Economies grâce à la bonne utilisation des produits
+    </p>
   </section>
 
-
+  <!-- COMMENT ÇA MARCHE -->
   <section class="section">
-
-    <h2>Comment ça marche ?</h2>
+    <h2>Comment fonctionne PoolCare ?</h2>
 
     <div class="steps">
-
       <div class="card">
-        <img src="images/piscine-propre.jpg" class="step-img">
+<img src="./images/piscine-propre.jpg" class="step-img">
         <h3>1️⃣ Configurez</h3>
-        <p>Votre piscine</p>
+        <p>Votre piscine, son volume et son environnement.</p>
       </div>
 
       <div class="card">
-        <img src="images/piscine-moyenne.jpg" class="step-img">
-        <h3>2️⃣ Analysez</h3>
-        <p>Vos paramètres</p>
+<img src="./images/piscine-moyenne.jpg" class="step-img">
+        <h3>2️⃣ Saisissez</h3>
+        <p>Vos mesures d’eau (pH, TAC, CYA, algues).</p>
       </div>
 
       <div class="card">
-        <img src="images/piscine-sale.jpg" class="step-img">
-        <h3>3️⃣ Corrigez</h3>
-        <p>Dans le bon ordre</p>
+<img src="./images/piscine-sale.jpg" class="step-img">
+        <h3>3️⃣ Suivez</h3>
+        <p>Un plan d’action clair, dans le bon ordre.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POURQUOI POOLCARE -->
+  <section class="section">
+    <h2>Pourquoi PoolCare ?</h2>
+    <ul>
+      <li>🧠 Priorités respectées (CYA → TAC → pH → traitement)</li>
+      <li>🛡️ Produits compatibles, sans mélange dangereux</li>
+      <li>📊 Dosages adaptés au volume réel</li>
+      <li>🌿 Gestion des algues simples et complexes</li>
+    </ul>
+  </section>
+
+  <!-- OFFRES -->
+  <section class="section">
+    <h2>Essai gratuit & Abonnements</h2>
+
+    <div class="pricing-grid">
+
+      <div class="offer">
+        <h3>Essai Premium</h3>
+        <p><strong>0 €</strong> – 7 jours</p>
+        <ul>
+          <li>✔ Accès complet</li>
+          <li>✔ Algues complexes</li>
+          <li>✔ Conseils sécurité</li>
+        </ul>
+        <button onclick="openTrial()">Activer l’essai</button>
+      </div>
+
+      <div class="offer highlight">
+        <h3>Premium annuel ⭐</h3>
+        <p><strong>20 € / an</strong></p>
+        <p class="small">≈ 1,67 € / mois</p>
+        <button onclick="activatePremium('yearly')">Choisir</button>
+      </div>
+
+      <div class="offer">
+        <h3>Premium mensuel</h3>
+        <p><strong>2,50 € / mois</strong></p>
+        <button onclick="activatePremium('monthly')">Choisir</button>
       </div>
 
     </div>
-
   </section>
 
 </section>
 
 <!-- =========================
-   ONBOARDING
+     ONBOARDING
 ========================= -->
-
 <section id="page-onboarding" class="page">
-
-  <h2>Configuration</h2>
+  <h2>Bienvenue sur PoolCare</h2>
+  <p>Répondez à quelques questions pour personnaliser votre analyse.</p>
 
   <button onclick="goToPage('page-analyse')">
-    Continuer
+    Continuer vers l’analyse
   </button>
-
 </section>
 
 <!-- =========================
-   ANALYSE
+     ANALYSE
 ========================= -->
-
 <section id="page-analyse" class="page">
 
-  <h2>Analyse</h2>
+  <h2>Configuration de la piscine</h2>
+<img
+src="images/piscine-moyenne.jpg"
+  class="section-image"
+  alt="Analyse eau piscine"
+>
 
-  <img
-    src="images/piscine-moyenne.jpg"
-    style="width:100%;max-height:220px;object-fit:cover;border-radius:12px;margin-bottom:20px;"
-  >
-
-  <label>Volume</label>
+  <label>Volume (m³)</label>
   <input id="volume" type="number" value="40">
+
+  <label>Saison</label>
+  <select id="season">
+    <option value="baignade">Baignade</option>
+    <option value="hivernage-actif">Hivernage actif</option>
+    <option value="hivernage-passif">Hivernage passif</option>
+  </select>
+
+  <label>Traitement</label>
+  <select id="treatment">
+    <option value="chlore">Chlore</option>
+    <option value="brome">Brome</option>
+    <option value="sel">Sel</option>
+    <option value="oxygene">Oxygène actif</option>
+  </select>
 
   <label>pH</label>
   <input id="ph" type="number" step="0.1" value="7.2">
@@ -236,47 +418,93 @@ button.secondary {
   <select id="algae">
     <option value="none">Aucune</option>
     <option value="green">Vertes</option>
+    <option value="mustard">Moutarde</option>
+    <option value="black">Noires / rouges</option>
   </select>
 
   <br><br>
 
-  <button onclick="analyze();goToPage('page-results')">
-    Analyser
+  <button onclick="analyze(); goToPage('page-results')">
+    🔍 Analyser ma piscine
+  </button>
+</section>
+
+<!-- =========================
+     RÉSULTATS
+========================= -->
+<section id="page-results" class="page">
+
+  <h2>Résultats</h2>
+
+<img
+src="images/piscine-moyenne.jpg"
+
+  class="section-image"
+  alt="Entretien piscine"
+>
+
+  <div id="results"></div>
+
+  <hr>
+
+  <h3>📊 Historique des analyses</h3>
+
+  <!-- Aperçu seulement -->
+  <div id="history-preview"></div>
+
+  <canvas id="historyChart" height="180"></canvas>
+
+  <button onclick="goToPage('page-analyse')">
+    Modifier mes mesures
   </button>
 
 </section>
 
 <!-- =========================
-   RESULTATS
+     PAGE HISTORIQUE
 ========================= -->
+<section id="page-history" class="page">
 
-<section id="page-results" class="page">
+  <h2>📈 Mon historique</h2>
 
-  <h2>Résultats</h2>
+  <!-- Historique principal -->
+  <div id="history"></div>
 
-  <div id="results"></div>
-
-  <h3>Historique</h3>
-
-  <div id="history-preview"></div>
-
-  <canvas id="historyChart" height="180"></canvas>
+  <button onclick="goToPage('page-home')">
+    Retour accueil
+  </button>
 
 </section>
 
 <!-- =========================
-   HISTORIQUE
+     MODALES PREMIUM
 ========================= -->
+<div id="premium-lock" class="premium-modal hidden">
+  <div class="modal-content">
+    <h2>🔒 Premium</h2>
+    <p>Accès complet aux protocoles experts.</p>
+    <button onclick="openTrial()">Essai 7 jours</button>
+    <button onclick="closePremium()">Fermer</button>
+  </div>
+</div>
 
-<section id="page-history" class="page">
+<div id="premium-trial" class="premium-modal hidden">
+  <div class="modal-content">
+    <h2>⭐ Essai Premium</h2>
+    <button onclick="activateTrial()">Activer</button>
+    <button onclick="closePremium()">Fermer</button>
+  </div>
+</div>
 
-  <h2>Mon historique</h2>
-
-  <div id="history"></div>
-
-</section>
+<div id="premium-offers" class="premium-modal hidden">
+  <div class="modal-content">
+    <h2>💎 Premium</h2>
+    <button onclick="activatePremium('monthly')">Mensuel</button>
+    <button onclick="activatePremium('yearly')">Annuel</button>
+    <button onclick="closePremium()">Fermer</button>
+  </div>
+</div>
 
 <script src="app.js"></script>
-
 </body>
 </html>
