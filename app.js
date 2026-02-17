@@ -27,10 +27,16 @@ const USER = {
 };
 
 /* =========================
+   HISTORIQUE GLOBAL
+========================= */
+let ANALYSIS_HISTORY = getHistory();
+
+/* =========================
    HISTORIQUE ANALYSES (UNIQUE)
 ========================= */
 
 function saveAnalysis(data) {
+let ANALYSIS_HISTORY = getHistory();
 
   let history =
     JSON.parse(localStorage.getItem("poolcare_history")) || [];
@@ -48,6 +54,7 @@ function saveAnalysis(data) {
     "poolcare_history",
     JSON.stringify(history)
   );
+ANALYSIS_HISTORY = history;
 }
 
 function getHistory() {
