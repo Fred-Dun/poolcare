@@ -548,13 +548,14 @@ function goToPage(id) {
   }
 
   /* Affichage historique au bon moment */
-  if (id === "page-history" || id === "page-results") {
-    setTimeout(() => {
-      renderHistory();
-      drawChart();
-    }, 50);
-  }
+  
+if (id === "page-history") {
+  setTimeout(() => {
+    renderHistory();
+    drawChart();
+  }, 50);
 }
+
 
 /* =========================
    PREMIUM
