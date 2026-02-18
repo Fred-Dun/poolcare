@@ -377,15 +377,21 @@ else if (healthScore < 70) {
 }
 
 results.innerHTML += `
-  <img src="${statusImage}" style="
+  <div style="
     width:100%;
-    height:auto;
-    max-height:320px;
-    object-fit:contain;
-    border-radius:10px;
-    margin-bottom:12px;
-    background:#f4f7f9;
+    text-align:center;
+    margin-bottom:16px;
   ">
+    <img src="${statusImage}" style="
+      width:100%;
+      max-width:600px;
+      height:auto;
+      display:block;
+      margin:0 auto;
+      border-radius:12px;
+      background:#f4f7f9;
+    ">
+  </div>
 `;
 
   /* 🚨 ALERTES */
