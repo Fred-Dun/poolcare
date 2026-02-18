@@ -12,16 +12,6 @@ body {
   margin: 0;
   padding: 20px;
 }
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url("https://images.unsplash.com/featured/?luxury,pool");
-  background-size: cover;
-  background-position: center;
-  opacity: 0.06;
-  z-index: -1;
-}
 
 header {
   margin-bottom: 20px;
@@ -162,7 +152,7 @@ select {
 .hero-bg {
   background:
     linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-    url("images/hero.jpg") center/cover no-repeat;
+    url("images/hero-poolcare.png") center/cover no-repeat;
   color: white;
 }
 
@@ -206,3 +196,12 @@ select {
   border-radius: 12px;
   margin-bottom: 20px;
 }
+
+/* Centrer les boutons du header */
+.app-header > div:first-child {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
