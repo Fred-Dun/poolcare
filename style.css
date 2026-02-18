@@ -232,3 +232,41 @@ select {
   font-weight: 600;
 }
 
+/* FORMULAIRE ANALYSE */
+
+#page-analyse {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Grille des champs */
+#page-analyse form,
+#page-analyse .form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Chaque champ */
+#page-analyse label {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+#page-analyse input,
+#page-analyse select {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+}
+
+/* Bouton analyse */
+#page-analyse button {
+  margin-top: 25px;
+  width: 100%;
+  padding: 14px;
+  font-size: 17px;
+  border-radius: 10px;
+}
+
