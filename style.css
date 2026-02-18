@@ -147,16 +147,12 @@ select {
   font-size: 13px;
   color: #555;
 }
-.hero-bg {
-  background:
-    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-    url("images/hero-poolcare.png") center/cover no-repeat;
-  color: black;
+.hero h1 {
+  color: #1E88E5;   /* bleu PoolCare */
 }
 
-.hero-bg h1,
-.hero-bg p {
-  color: white;
+.hero p {
+  color: #333;      /* noir lisible */
 }
 /* Images des étapes */
 .step-img {
