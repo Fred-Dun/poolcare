@@ -183,14 +183,6 @@ select {
    IMAGES
 ========================= */
 
-.hero-image {
-  width: 100%;
-  max-height: 350px;
-  object-fit: cover;
-  border-radius: 14px;
-  margin-bottom: 20px;
-}
-
 .section-image {
   width: 100%;
   max-height: 200px;
@@ -205,4 +197,12 @@ select {
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 10px;
+}
+
+.hero-image {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
 }
