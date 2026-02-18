@@ -302,3 +302,15 @@ select {
   border-radius: 12px;
 }
 
+/* =========================
+   NAVIGATION PAGES
+========================= */
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
