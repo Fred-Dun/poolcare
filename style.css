@@ -41,11 +41,9 @@ header {
 }
 .hero-image {
   width: 100%;
-  height: 240px;
+  height: 480px;
   object-fit: cover;
-  border-radius: 16px;
-  margin-bottom: 20px;
-  display: block;
+  border-radius: 20px;
 }
 .section-image {
   width: 100%;
@@ -153,7 +151,7 @@ select {
   background:
     linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
     url("images/hero-poolcare.png") center/cover no-repeat;
-  color: white;
+  color: black;
 }
 
 .hero-bg h1,
