@@ -379,10 +379,12 @@ else if (healthScore < 70) {
 results.innerHTML += `
   <img src="${statusImage}" style="
     width:100%;
-    max-height:180px;
-    object-fit:cover;
+    height:auto;
+    max-height:320px;
+    object-fit:contain;
     border-radius:10px;
     margin-bottom:12px;
+    background:#f4f7f9;
   ">
 `;
 
