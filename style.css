@@ -25,11 +25,9 @@ header {
    HERO / LANDING
 ========================= */
 .hero {
+  max-width: 1200px;
+  margin: auto;
   text-align: center;
-  background: var(--poolcare-light);
-  padding: 50px 20px;
-  border-radius: 16px;
-  margin-bottom: 40px;
 }
 
 .hero-actions {
@@ -41,9 +39,12 @@ header {
 }
 .hero-image {
   width: 100%;
-  height: 480px;
-  object-fit: cover;
-  border-radius: 20px;
+  height: auto;        /* IMPORTANT */
+  max-height: 420px;   /* limite propre */
+  object-fit: contain; /* ne coupe plus */
+  border-radius: 16px;
+  display: block;
+  margin: 0 auto 20px;
 }
 .section-image {
   width: 100%;
