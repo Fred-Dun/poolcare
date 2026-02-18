@@ -270,3 +270,40 @@ select {
   border-radius: 10px;
 }
 
+/* =========================
+   GRID ANALYSE PRO
+========================= */
+
+.analyse-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.analyse-grid div {
+  display: flex;
+  flex-direction: column;
+}
+
+.analyse-grid label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.analyse-grid input,
+.analyse-grid select {
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.analyse-btn {
+  margin-top: 30px;
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+
