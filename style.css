@@ -197,11 +197,38 @@ select {
   margin-bottom: 20px;
 }
 
-/* Centrer les boutons du header */
-.app-header > div:first-child {
-  flex: 1;
+/* HEADER */
+.app-header {
+  position: sticky;
+  top: 0;
+  background: white;
   display: flex;
+  justify-content: center; /* centre le contenu */
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #ddd;
+  z-index: 100;
+  position: relative;
+}
+
+/* conteneur des boutons */
+.app-header > div:first-child {
+  display: flex;
+  gap: 15px;
   justify-content: center;
-  gap: 10px;
+}
+
+/* score à droite */
+#header-score {
+  position: absolute;
+  right: 20px;
+}
+
+/* Boutons plus gros */
+.app-header button {
+  padding: 12px 22px;
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: 600;
 }
 
